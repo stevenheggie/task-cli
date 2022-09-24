@@ -6,7 +6,10 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/boltdb/bolt"
 	"github.com/spf13/cobra"
+	"github.com/stevenheggie/task-cli/database"
+	"github.com/stevenheggie/task-cli/main"
 )
 
 // addCmd represents the add command
@@ -19,9 +22,15 @@ Added "wash dishes" to your task list.
 $ task add go to the gym
 Added "go to the gym" to your task list.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("This is a fake \"add\" command")
+		// fmt.Println("This is a fake \"add\" command")
+
+		//TODO: Get DB from main after init command
+		database.CreateTodoEntry(&bolt.DB{}, &database.Todo{ID: 0, Value: args[0]}) // ID added by Bolt
 		fmt.Printf("Added \"%s\" to your task list.", args[0])
+		main.DB
+
 	},
+	Args: cobra.MinimumNArgs(1),
 }
 
 func init() {

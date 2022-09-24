@@ -1,4 +1,4 @@
-package db
+package database
 
 import (
 	"encoding/binary"
@@ -74,6 +74,7 @@ func ViewTodoList(db *bolt.DB) {
 
 		for k, v := c.First(); k != nil; k, v = c.Next() {
 			fmt.Printf("key=%s, value=%s\n", k, v)
+			// fmt.Printf("%s. %s\n", k, v) final format
 		}
 
 		return nil
