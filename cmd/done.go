@@ -17,6 +17,7 @@ var doneCmd = &cobra.Command{
 You have completed the "wash dishes" task.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("This is a fake \"done\" command")
+		fmt.Printf("Task \"%s\" has been marked as complete.", "take out rubbish")
 	},
 }
 

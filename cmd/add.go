@@ -20,7 +20,7 @@ $ task add go to the gym
 Added "go to the gym" to your task list.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("This is a fake \"add\" command")
-		common.getInput()
+		fmt.Printf("Added \"%s\" to your task list.", args[0])
 	},
 }
 
