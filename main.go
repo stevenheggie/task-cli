@@ -1,6 +1,5 @@
 /*
 Copyright © 2022 Steven Heggie github.com/stevenheggie
-
 */
 package main
 

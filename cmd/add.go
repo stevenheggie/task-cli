@@ -19,7 +19,8 @@ Added "wash dishes" to your task list.
 $ task add go to the gym
 Added "go to the gym" to your task list.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("add called")
+		fmt.Println("This is a fake \"add\" command")
+		common.getInput()
 	},
 }
 

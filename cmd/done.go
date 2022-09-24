@@ -16,7 +16,7 @@ var doneCmd = &cobra.Command{
 	Long: `$ task do 1
 You have completed the "wash dishes" task.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("done called")
+		fmt.Println("This is a fake \"done\" command")
 	},
 }
 

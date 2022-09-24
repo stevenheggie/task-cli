@@ -18,7 +18,7 @@ You have the following tasks:
 1. wash dishes
 2. go to the gym`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("list called")
+		fmt.Println("This is a fake \"list\" command")
 	},
 }
 
