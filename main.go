@@ -4,30 +4,16 @@ Copyright © 2022 Steven Heggie github.com/stevenheggie
 package main
 
 import (
-	"fmt"
-	"log"
-
-	"github.com/boltdb/bolt"
 	"github.com/stevenheggie/task-cli/cmd"
+	"github.com/stevenheggie/task-cli/db"
 )
+
+const DB_PATH string = "./todo.db"
 
 func main() {
 
-	// Open my.db (Bolt) data file in current dir.
-	// todo.db created if doesnt exist
-	db, err := bolt.Open("todo.db", 0600, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer db.Close()
-
-	db.Update(func(tx *bolt.Tx) error {
-		_, err := tx.CreateBucketIfNotExists([]byte("List"))
-		if err != nil {
-			return fmt.Errorf("create bucket: %s", err)
-		}
-		return nil
-	})
+	// Initialise BoltDB
+	db.InitDB(DB_PATH)
 
 	// Execute cli cmd
 	cmd.Execute()

@@ -1,5 +1,5 @@
 /*
-Copyright © 2022 NAME HERE <EMAIL ADDRESS>
+Copyright © 2022 Steven Heggie github.com/stevenheggie
 */
 package cmd
 
