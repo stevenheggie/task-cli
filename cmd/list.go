@@ -19,7 +19,7 @@ You have the following tasks:
 1. wash dishes
 2. go to the gym`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("This is a fake \"list\" command")
+		fmt.Println("You have the following tasks:")
 		database.ViewTodoList("./todo.db")
 	},
 }

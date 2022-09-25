@@ -2,7 +2,7 @@ module github.com/stevenheggie/task-cli
 
 go 1.19
 
-require (
+require ( //TODO migrate to newer bolt library - https://github.com/etcd-io/bbolt
 	github.com/boltdb/bolt v1.3.1 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/spf13/cobra v1.5.0 // indirect

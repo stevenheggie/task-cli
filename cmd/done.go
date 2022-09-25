@@ -7,6 +7,7 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
+	"github.com/stevenheggie/task-cli/database"
 )
 
 // doneCmd represents the done command
@@ -16,8 +17,8 @@ var doneCmd = &cobra.Command{
 	Long: `$ task do 1
 You have completed the "wash dishes" task.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("This is a fake \"done\" command")
-		fmt.Printf("Task \"%s\" has been marked as complete.", "take out rubbish")
+		database.MarkTodoDone("./todo.db", args[0])
+		fmt.Printf("Task \"%s\" has been marked as complete.", args[0])
 	},
 }
 

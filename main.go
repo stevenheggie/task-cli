@@ -11,7 +11,7 @@ import (
 func main() {
 
 	// Initialise BoltDB
-	database.InitDB("./todo.db")
+	database.InitDB("./todo.db") //TODO: use viper and set this in config file
 
 	// Execute cli cmd
 	cmd.Execute()

@@ -20,7 +20,7 @@ Added "wash dishes" to your task list.
 $ task add go to the gym
 Added "go to the gym" to your task list.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		database.CreateTodoEntry("./todo.db", &database.Todo{ID: 0, Value: args[0]}) // ID added by Bolt
+		database.CreateTodoEntry("./todo.db", args[0]) // ID added by Bolt
 		fmt.Printf("Added \"%s\" to your task list.", args[0])
 	},
 	Args: cobra.MinimumNArgs(1),
