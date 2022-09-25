@@ -7,6 +7,7 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
+	"github.com/stevenheggie/task-cli/database"
 )
 
 // listCmd represents the list command
@@ -19,6 +20,7 @@ You have the following tasks:
 2. go to the gym`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("This is a fake \"list\" command")
+		database.ViewTodoList("./todo.db")
 	},
 }
 

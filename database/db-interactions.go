@@ -35,7 +35,21 @@ func InitDB(dbPath string) *bolt.DB {
 	return db
 }
 
-func CreateTodoEntry(db *bolt.DB, entry *Todo) error {
+// func CreateTodoEntry(db *bolt.DB, entry *Todo) error {
+func CreateTodoEntry(dbPath string, entry *Todo) error {
+
+	db, err := bolt.Open(dbPath, 0600, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	// db.Update(func(tx *bolt.Tx) error {
+	// 	b := tx.Bucket([]byte("MyBucket"))
+	// 	err := b.Put([]byte("answer"), []byte("42"))
+	// 	return err
+	// })
+
 	return db.Update(func(tx *bolt.Tx) error {
 		// Retrieve the Todos bucket.
 		// Created when the DB is first opened if not already existing
@@ -64,7 +78,14 @@ func itob(v int) []byte {
 	return b
 }
 
-func ViewTodoList(db *bolt.DB) {
+// func ViewTodoList(db *bolt.DB) {
+func ViewTodoList(dbPath string) {
+
+	db, err := bolt.Open(dbPath, 0600, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
 
 	db.View(func(tx *bolt.Tx) error {
 		// Assume bucket exists and has keys
