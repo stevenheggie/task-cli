@@ -36,6 +36,8 @@ func Execute() {
 	if err != nil {
 		os.Exit(1)
 	}
+	fmt.Println("PLPLPLPLP")
+	fmt.Println(viper.GetString("DB_DIR") + "/" + viper.GetString("DB_NAME"))
 }
 
 func init() {
@@ -46,7 +48,9 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.task.yaml)")
+	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.task-cli.yaml)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is ./.task-cli.yaml)")
+
 	// TODO: Add DB PATH Config option
 
 	// Cobra also supports local flags, which will only run
@@ -60,15 +64,23 @@ func initConfig() {
 	if cfgFile != "" {
 		// Use config file from the flag.
 		viper.SetConfigFile(cfgFile)
+		fmt.Println("hello")
 	} else {
-		// Find home directory.
-		home, err := os.UserHomeDir()
+		// // Find home directory.
+		// home, err := os.UserHomeDir()
+		cwdPath, err := os.Getwd()
 		cobra.CheckErr(err)
 
+		fmt.Println(cwdPath)
 		// Search config in home directory with name ".viper-test" (without extension).
-		viper.AddConfigPath(home)
+		// viper.AddConfigPath(home)
+
+		viper.AddConfigPath(cwdPath) // use current working dir for config file (testing)
+		viper.AddConfigPath(".")
 		viper.SetConfigType("yaml")
-		viper.SetConfigName(".task")
+		viper.SetConfigName(".task-cli")
+		viper.SetDefault("DB_DIR", ".")        // default database directory to working dir
+		viper.SetDefault("DB_NAME", "todo.db") // default database name to 'todo.db'
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match
@@ -77,4 +89,5 @@ func initConfig() {
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
 	}
+
 }
