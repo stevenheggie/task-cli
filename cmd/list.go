@@ -19,8 +19,16 @@ You have the following tasks:
 1. wash dishes
 2. go to the gym`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("You have the following tasks:")
-		database.ViewTodoList("./todo.db")
+
+		numEntries := database.GetNumEntries("./todo.db")
+
+		if numEntries > 0 {
+			fmt.Println("You have the following tasks:")
+			database.ViewTodoList("./todo.db")
+		} else {
+			fmt.Println("Your to-do list is empty. Woohoo!")
+		}
+
 	},
 }
 
