@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
-	"github.com/stevenheggie/task-cli/database"
+	"github.com/stevenheggie/task/database"
 )
 
 // addCmd represents the add command
@@ -23,7 +23,7 @@ Added "go to the gym" to your task list.`,
 		database.CreateTodoEntry("./todo.db", args[0]) // ID added by Bolt
 		fmt.Printf("Added \"%s\" to your task list.", args[0])
 	},
-	Args: cobra.MinimumNArgs(1),
+	// Args: cobra.MinimumNArgs(1),
 }
 
 func init() {

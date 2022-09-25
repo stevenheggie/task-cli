@@ -1,4 +1,4 @@
-module github.com/stevenheggie/task-cli
+module github.com/stevenheggie/task
 
 go 1.19
 

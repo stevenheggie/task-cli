@@ -4,8 +4,8 @@ Copyright © 2022 Steven Heggie github.com/stevenheggie
 package main
 
 import (
-	"github.com/stevenheggie/task-cli/cmd"
-	"github.com/stevenheggie/task-cli/database"
+	"github.com/stevenheggie/task/cmd"
+	"github.com/stevenheggie/task/database"
 )
 
 func main() {
