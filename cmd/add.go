@@ -14,7 +14,7 @@ import (
 // addCmd represents the add command
 var addCmd = &cobra.Command{
 	Use:   "add",
-	Short: "Add a new task to your TODO list",
+	Short: "Add a new task to your to-do list",
 	Long: `$ task add wash dishes
 Added "wash dishes" to your task list.
 	

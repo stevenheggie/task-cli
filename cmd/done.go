@@ -13,7 +13,7 @@ import (
 // doneCmd represents the done command
 var doneCmd = &cobra.Command{
 	Use:   "done",
-	Short: "Mark a task on your TODO list as complete",
+	Short: "Mark a task on your to-do list as complete",
 	Long: `$ task do 1
 You have completed the "wash dishes" task.`,
 	Run: func(cmd *cobra.Command, args []string) {
