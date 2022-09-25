@@ -47,7 +47,6 @@ func CreateTodoEntry(dbPath string, entry string) error {
 		id, _ := b.NextSequence()
 
 		fmt.Println(entry)
-
 		// Persist bytes to "todos" bucket.
 		return b.Put([]byte(strconv.Itoa(int(id))), []byte(entry))
 	})
