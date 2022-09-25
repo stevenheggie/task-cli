@@ -5,9 +5,10 @@ package cmd
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/spf13/cobra"
-	"github.com/stevenheggie/task-cli/database"
+	"github.com/stevenheggie/task/database"
 )
 
 // addCmd represents the add command
@@ -20,10 +21,12 @@ Added "wash dishes" to your task list.
 $ task add go to the gym
 Added "go to the gym" to your task list.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		database.CreateTodoEntry("./todo.db", args[0]) // ID added by Bolt
-		fmt.Printf("Added \"%s\" to your task list.", args[0])
+
+		// create todo entry string and write to db
+		entry := strings.Join(args, " ")
+		database.CreateTodoEntry("./todo.db", entry)
+		fmt.Printf("Added \"%s\" to your task list.", entry)
 	},
-	Args: cobra.MinimumNArgs(1),
 }
 
 func init() {

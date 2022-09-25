@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
-	"github.com/stevenheggie/task-cli/database"
+	"github.com/stevenheggie/task/database"
 )
 
 // listCmd represents the list command
