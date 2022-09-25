@@ -147,3 +147,23 @@ func ReorderKeys(dbPath string) error {
 
 	return nil
 }
+
+func GetNumEntries(dbPath string) int {
+
+	numOfEntries := 0
+
+	db, err := bolt.Open(dbPath, 0600, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	db.View(func(tx *bolt.Tx) error {
+
+		b := tx.Bucket([]byte("Todos"))
+		numOfEntries = b.Stats().KeyN
+		return nil
+	})
+
+	return numOfEntries
+}
