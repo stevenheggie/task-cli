@@ -31,12 +31,14 @@ func InitDB(dbPath string) *bolt.DB {
 
 func CreateTodoEntry(dbPath string, entry string) error {
 
+	// access db
 	db, err := bolt.Open(dbPath, 0600, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer db.Close()
 
+	// generate ID (key) and add entry (value) to db
 	return db.Update(func(tx *bolt.Tx) error {
 		// Retrieve the Todos bucket.
 		// Created when the DB is first opened if not already existing
@@ -46,7 +48,6 @@ func CreateTodoEntry(dbPath string, entry string) error {
 		// This returns an error only if the Tx is closed or not writeable.
 		id, _ := b.NextSequence()
 
-		fmt.Println(entry)
 		// Persist bytes to "todos" bucket.
 		return b.Put([]byte(strconv.Itoa(int(id))), []byte(entry))
 	})
