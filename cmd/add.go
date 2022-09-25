@@ -25,8 +25,7 @@ Added "go to the gym" to your task list.`,
 		// create todo entry string and write to db
 		entry := strings.Join(args, " ")
 		database.CreateTodoEntry("./todo.db", entry)
-
-		fmt.Printf("Added \"%s\" to your task list.", args[0])
+		fmt.Printf("Added \"%s\" to your task list.", entry)
 	},
 }
 

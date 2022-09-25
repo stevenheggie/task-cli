@@ -19,6 +19,7 @@ You have completed the "wash dishes" task.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		database.MarkTodoDone("./todo.db", args[0])
 		fmt.Printf("Task \"%s\" has been marked as complete.", args[0])
+		database.ReorderKeys("./todo.db")
 	},
 }
 
