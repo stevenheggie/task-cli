@@ -14,8 +14,8 @@ import (
 var doneCmd = &cobra.Command{
 	Use:   "done",
 	Short: "Mark a task on your to-do list as complete",
-	Long: `$ task do 1
-You have completed the "wash dishes" task.`,
+	Long: `$ task done 1
+"Task "wash the dishes" has been marked as complete."`,
 	Run: func(cmd *cobra.Command, args []string) {
 		database.MarkTodoDone("./todo.db", args[0])
 		fmt.Printf("Task \"%s\" has been marked as complete.", args[0])
